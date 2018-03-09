@@ -1,26 +1,23 @@
-import React, { Component } from 'react';
-import { render } from 'react-dom';
-import { BrowserRouter, Route, Switch } from 'react-router-dom'
-import Styles from './App.css'
-// Import custom components
-import HomeContainer from './container/HomeContainer.jsx';
-import Header from './components/shared/header'
+import React from 'react';
+import { BrowserRouter as Router, Route, Switch, Redirect } from 'react-router-dom';
+import Header from './components/Header';
+import Home from './containers/Home';
+import Score from './containers/Score';
+import NotFound from './components/NotFound';
 
-export default class App extends React.Component {
-
-  render() {
-    return (
-      <div className="wrapper container divContainer">
-        <Header />
+const App = () => (
+    <Router>
         <div>
-          <BrowserRouter>
+            <Header/>
             <Switch>
-              <Route exact path="/" component={HomeContainer} />
-              <Route exact path="/leaderboard" component={LeaderBoardContainer} />
+                <Redirect exact from="/" to="/home"/>
+                <Route path="/home" component={Home}/>
+                <Route path="/scoreboard" component={Score}/>
+                <Route path="/404" component={NotFound}/>
+                <Redirect from="*" to="/404"/>
             </Switch>
-          </BrowserRouter>
         </div>
-      </div>
-    );
-  }
-}
+    </Router>
+);
+
+export default App;
