@@ -1,4 +1,4 @@
-import * as actionTypes from '../api/constant';
+import * as actionTypes from '../helper/constant';
 import _ from 'lodash';
 
 const initialState = {
@@ -14,7 +14,7 @@ const initialState = {
     winningCombo: []
 };
 
-const combos = [
+const winOptions = [
     [0, 1, 2],
     [3, 4, 5],
     [6, 7, 8],
@@ -25,7 +25,7 @@ const combos = [
     [2, 4, 6]
 ];
 
-export const gameReducer = (state = initialState, action) => {
+export const tictactoeReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.RESET_GAME:
             const current_score = _.assign({}, state.scores);
@@ -44,7 +44,7 @@ export const gameReducer = (state = initialState, action) => {
             });
             newBoard = inValidMove ? state.board : newBoard;
             var t = 0;
-            const winningCheck = combos.some((val, key) => {
+            const winningCheck = winOptions.some((val, key) => {
                 if (val.every((index) => newBoard[index] === state.currentPlayer)) {
 
                     t = key;
@@ -52,36 +52,36 @@ export const gameReducer = (state = initialState, action) => {
 
                 }
             });
-    if(winningCheck) {
+            if (winningCheck) {
 
-        console.log("index",t,combos[t]);
+                console.log("index", t, winOptions[t]);
 
-    }
-    const drawCheck = (newBoard.reduce((a, b) => a + b, '')).length === 9;
-    const newScore = _.assign({}, state.scores);
-    if (winningCheck && !inValidMove) {
-        state.winningCombo = combos[t];
-        if (state.currentPlayer === 'X') {
-            newScore['player1'] += 1;
-        } else {
-            newScore['player2'] += 1;
-        }
-    } else if (drawCheck && !inValidMove) {
-        newScore.draw += 1;
-    }
-    const currPlayer = inValidMove || winningCheck || drawCheck ? state.currentPlayer : (state.currentPlayer === 'X' ? 'O' : 'X');
-    const currMessage = winningCheck ? `${currPlayer} won the game!` : (drawCheck ? 'Its a draw!' : `${currPlayer} moves next`);
-    return {
-        board: newBoard,
-        currentPlayer: currPlayer,
-        isDone: (winningCheck || drawCheck),
-        scores: newScore,
-        message: currMessage,
-        winningCombo: state.winningCombo
+            }
+            const drawCheck = (newBoard.reduce((a, b) => a + b, '')).length === 9;
+            const newScore = _.assign({}, state.scores);
+            if (winningCheck && !inValidMove) {
+                state.winningCombo = winOptions[t];
+                if (state.currentPlayer === 'X') {
+                    newScore['player1'] += 1;
+                } else {
+                    newScore['player2'] += 1;
+                }
+            } else if (drawCheck && !inValidMove) {
+                newScore.draw += 1;
+            }
+            const currPlayer = inValidMove || winningCheck || drawCheck ? state.currentPlayer : (state.currentPlayer === 'X' ? 'O' : 'X');
+            const currMessage = winningCheck ? `${currPlayer} won the game!` : (drawCheck ? 'Its a draw!' : `${currPlayer} moves next`);
+            return {
+                board: newBoard,
+                currentPlayer: currPlayer,
+                isDone: (winningCheck || drawCheck),
+                scores: newScore,
+                message: currMessage,
+                winningCombo: state.winningCombo
+            };
+
+        default:
+            return _.assign({}, state);
     };
-
-default:
-    return _.assign({}, state);
-};
 }
 

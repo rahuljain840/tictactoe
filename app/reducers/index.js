@@ -1,19 +1,8 @@
-// import { combineReducers } from 'redux'
-// import {allBooksReducer, singleBookReducer, isSuccessReducer} from './book'
-//
-// const rootReducer = combineReducers({
-//    books: allBooksReducer,
-//    book: singleBookReducer,
-//    isSuccess: isSuccessReducer
-// });
-//
-// export default rootReducer
-
 import { combineReducers } from 'redux';
-import { gameReducer as game } from './tictactoe';
+import { tictactoeReducer as tictactoe } from './tictactoe';
 
 const rootReducer = combineReducers({
-    game
+    tictactoe
 });
 
 export default rootReducer;

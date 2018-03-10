@@ -4,7 +4,7 @@ import HomeComponent from '../components/Home';
 
 const mapStateToProps = ({ state }, props) => {
     return {
-        game: state.game
+        tictactoe: state.tictactoe
     };
 };
 

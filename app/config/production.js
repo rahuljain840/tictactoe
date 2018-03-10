@@ -10,8 +10,8 @@ API.protocols = {
 
 // add Domain configurations
 API.domain = {
-    BOOKS_CONNECT_LOCAL: 'localhost:3000',
-    BOOKS_CONNECT_SERVER: ''
+    TICTACTOE_CONNECT_LOCAL: 'localhost:3000',
+    TICTACTOE_CONNECT_SERVER: ''
 };
 API.imagePath = '/assets/img/';
 

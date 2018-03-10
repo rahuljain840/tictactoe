@@ -1,11 +1,4 @@
-import * as types from '../api/constant';
-
-export const isSuccess = (check) => {
-    return {
-        type: types.CHECK_SUCCESS,
-        check
-    };
-};
+import * as types from '../helper/constant';
 
 export function selectChance(index) {
     return {
@@ -13,6 +6,7 @@ export function selectChance(index) {
         idx: index
     };
 }
+
 export function resetGame() {
     return {
         type: types.RESET_GAME

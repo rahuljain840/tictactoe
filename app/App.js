@@ -12,7 +12,7 @@ const App = () => (
             <Switch>
                 <Redirect exact from="/" to="/home"/>
                 <Route path="/home" component={Home}/>
-                <Route path="/scoreboard" component={Score}/>
+                <Route path="/leaderboard" component={Score}/>
                 <Route path="/404" component={NotFound}/>
                 <Redirect from="*" to="/404"/>
             </Switch>

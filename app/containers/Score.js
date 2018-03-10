@@ -1,10 +1,10 @@
 import { connect } from 'react-redux';
 import { selectChance, resetGame } from '../actions';
-import Board from '../components/Scoreboard';
+import Board from '../components/Leaderboard';
 
 const mapStateToProps = ({ state }, props) => {
     return {
-        game: state.game
+        tictactoe: state.tictactoe
     };
 };
 

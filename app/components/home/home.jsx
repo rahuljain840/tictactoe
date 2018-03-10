@@ -53,7 +53,7 @@ class Home extends React.PureComponent {
 
     getBoard = () => {
         var board = [];
-        this.props.game.board.map((cell, i) => {
+        this.props.tictactoe.board.map((cell, i) => {
             board.push(<li key={i} id={i} onClick={this.selectEvent.bind(this, i)}>{cell}</li>);
         });
         return board;
@@ -70,8 +70,8 @@ class Home extends React.PureComponent {
         var canvas = document.getElementById('canvas');
         var context = canvas.getContext('2d');
         var listParent = document.getElementById("list-parent");
-        var target1 = listParent.children[parseInt(this.props.game.winningCombo[0])];
-        var target2 = listParent.children[parseInt(this.props.game.winningCombo[2])];
+        var target1 = listParent.children[parseInt(this.props.tictactoe.winningCombo[0])];
+        var target2 = listParent.children[parseInt(this.props.tictactoe.winningCombo[2])];
         var rect1 = target1.getBoundingClientRect();
         console.log(rect1.top, rect1.right, );
         var rect2 = target2.getBoundingClientRect();
@@ -96,13 +96,13 @@ class Home extends React.PureComponent {
         return (
             <section className="container ">
                 <div className="xo-container">
-                    <div className="result" id="player">{this.props.game.message}</div>
+                    <div className="result" id="player">{this.props.tictactoe.message}</div>
                     <ul id="list-parent">
                         {board}
                     </ul>
                     {/*<div className="result" id="result"> Not Completed</div>*/}
                     <div className="result" id="result">
-                        {this.props.game.isDone && <button className='reset btn-success btn' onClick={this.resetScore}>Reset</button>}
+                        {this.props.tictactoe.isDone && <button className='reset btn-success btn' onClick={this.resetScore}>Reset</button>}
                     </div>
                 </div>
             </section>
@@ -110,7 +110,7 @@ class Home extends React.PureComponent {
     }
 
     componentDidUpdate() {
-        if (this.props.game.isDone)
+        if (this.props.tictactoe.isDone)
             this.makeLine();
     }
 }
