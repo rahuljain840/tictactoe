@@ -1,11 +1,11 @@
-# React Book Library
-A React Demo for running a Webpack workflow in Node express
+# TicTacToe
+A React Demo for tictactoe game
 
 ## Install and Running
-`https://github.com/gunjan4455/redux_library.git`
+`https://github.com/rahuljain840/tictactoe.git`
 
 
-1. cd redux_library
+1. cd tictactoe
 2. npm install
 3. npm start
 4. navigate to http://localhost:3000 in your browser of choice.
