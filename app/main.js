@@ -6,7 +6,7 @@ import { createLogger } from 'redux-logger';
 import { default as rootReducer } from './reducers';
 import { isProd } from './config';
 import App from './app';
-import './assets/less/style.less';
+import './styles/less/style.less';
 
 const logger = createLogger({
     predicate: (getState, action) => !isProd()

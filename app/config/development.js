@@ -14,7 +14,7 @@ API.domain = {
     TICTACTOE_CONNECT_SERVER: ''
 };
 
-API.imagePath = '/assets/img/';
+API.imagePath = '/img/';
 
 // utility
 const UTILITY = {};
