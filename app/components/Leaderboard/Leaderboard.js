@@ -2,13 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 class Leaderboard extends React.PureComponent {
-
     constructor(props) {
         super(props);
-        this.state = {
-
-        };
-        console.log("yyyyyy", this.props);
     }
 
     cards = () => {

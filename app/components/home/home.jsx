@@ -102,7 +102,7 @@ class Home extends React.PureComponent {
                     </ul>
                     {/*<div className="result" id="result"> Not Completed</div>*/}
                     <div className="result" id="result">
-                        {this.props.tictactoe.isDone && <button className='reset btn-success btn' onClick={this.resetScore}>Reset</button>}
+                        {this.props.tictactoe.finish && <button className='reset btn-success btn' onClick={this.resetScore}>Reset</button>}
                     </div>
                 </div>
             </section>
@@ -110,7 +110,7 @@ class Home extends React.PureComponent {
     }
 
     componentDidUpdate() {
-        if (this.props.tictactoe.isDone)
+        if (this.props.tictactoe.finish)
             this.makeLine();
     }
 }

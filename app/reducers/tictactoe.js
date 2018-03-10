@@ -4,7 +4,7 @@ import _ from 'lodash';
 const initialState = {
     board: ['', '', '', '', '', '', '', '', ''],
     currentPlayer: 'X',
-    isDone: false,
+    finish: false,
     scores: {
         player1: 0,
         player2: 0,
@@ -35,7 +35,7 @@ export const tictactoeReducer = (state = initialState, action) => {
 
         case actionTypes.SELECT_CHANCE:
             const selection = action.idx;
-            const inValidMove = state.board[selection].length > 0 || state.isDone;
+            const inValidMove = state.board[selection].length > 0 || state.finish;
             let newBoard = state.board.map((val, key) => {
                 if (val.length > 0) {
                     return val;
@@ -74,7 +74,7 @@ export const tictactoeReducer = (state = initialState, action) => {
             return {
                 board: newBoard,
                 currentPlayer: currPlayer,
-                isDone: (winningCheck || drawCheck),
+                finish: (winningCheck || drawCheck),
                 scores: newScore,
                 message: currMessage,
                 winningCombo: state.winningCombo
